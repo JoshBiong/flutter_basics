@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
             size:30)),
           BottomNavigationBarItem(label: 'Settings',
             icon: Icon(Icons.settings,
-            color: Colors.black,
+            color: Colors.yellowAccent,
             size: 30 ))
         ],)
 
