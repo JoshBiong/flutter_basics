@@ -4,16 +4,49 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: FirstPage(),
+    );
+  }
 }
 
-class _MyAppState extends State<MyApp> {
-  String buttomName = 'Joshua';
-  int currentIndex = 0;
+class FirstPage extends StatelessWidget {
+  const FirstPage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Center(child: Text("First Page ")),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) {
+                  return const SecondScreen();
+                },
+              ),
+            );
+          },
+          child: const Text('Click'),
+        ),
+      ),
+    );
+  }
+}
+
+class SecondScreen extends StatelessWidget {
+  const SecondScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,67 +54,30 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Center(
-            child: Text('Flutter App'),
-          ),
+          title: const Center(child: Text('Second Screen')),
         ),
-        body: Center(
-          child: currentIndex == 0
-              ? Container(
-                  color: Colors.blueGrey,
-                  height: double.infinity,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.black,
-                            foregroundColor: Colors.yellowAccent),
-                        onPressed: () {},
-                        child: Text(buttomName),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            if (buttomName == 'Joshua') {
-                              buttomName = 'Jean Marie';
-                            } else {
-                              buttomName = 'Joshua';
-                            }
-                          });
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('Joshua Biong, Joshua Biong '),
+            const SizedBox(height: 10),
+            Center(
+              child: Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(
+                      MaterialPageRoute(
+                        builder: (BuildContext context) {
+                          return const FirstPage();
                         },
-                        child: const Text('Click Me'),
-                      )
-                    ],
-                  ),
-                )
-              : Image.asset('image/me.jpg'),
-        ),
-
-        //bottom navigation bar
-        bottomNavigationBar: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(
-              label: 'Home',
-              icon: Icon(Icons.home, size: 30),
-            ),
-            BottomNavigationBarItem(
-              label: 'Settings',
-              icon: Icon(Icons.settings, size: 30),
+                      ),
+                    );
+                  },
+                  child: const Text('Back to first page'),
+                ),
+              ),
             ),
           ],
-          currentIndex: currentIndex,
-          onTap: (int index) {
-            setState(
-              () {
-                currentIndex = index;
-              },
-            );
-          },
         ),
       ),
     );
