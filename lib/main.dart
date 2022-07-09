@@ -59,7 +59,7 @@ class _MyAppState extends State<MyApp> {
                     ],
                   ),
                 )
-              : const SizedBox(),
+              : Image.asset('image/me.jpg'),
         ),
 
         //bottom navigation bar
