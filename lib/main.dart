@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp( MyApp());
+  runApp(const MyApp());
 }
-
-
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -12,13 +10,10 @@ class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
 }
-
 class _MyAppState extends State<MyApp> {
 
 String buttomName = 'Joshua';
 int currentIndex = 0;
-
-
 
 
   @override
