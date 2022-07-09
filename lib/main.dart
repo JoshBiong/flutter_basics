@@ -10,11 +10,10 @@ class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
 }
+
 class _MyAppState extends State<MyApp> {
-
-String buttomName = 'Joshua';
-int currentIndex = 0;
-
+  String buttomName = 'Joshua';
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -27,45 +26,64 @@ int currentIndex = 0;
           ),
         ),
         body: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              setState(() {
-              if(buttomName == 'Joshua'){
-                buttomName= 'Jean Marie';
-              }else{
-                buttomName= 'Joshua';
-              }
-              });             
-            },
-            child: Text(buttomName),
-          ),
+          child: currentIndex == 0
+              ? Container(
+                  color: Colors.blueGrey,
+                  height: double.infinity,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.black,
+                            foregroundColor: Colors.yellowAccent),
+                        onPressed: () {},
+                        child: Text(buttomName),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            if (buttomName == 'Joshua') {
+                              buttomName = 'Jean Marie';
+                            } else {
+                              buttomName = 'Joshua';
+                            }
+                          });
+                        },
+                        child: const Text('Click Me'),
+                      )
+                    ],
+                  ),
+                )
+              : const SizedBox(),
         ),
 
         //bottom navigation bar
         bottomNavigationBar: BottomNavigationBar(
           items: const [
             BottomNavigationBarItem(
-               label: 'Home',
-              icon: Icon(Icons.home,  size: 30),
+              label: 'Home',
+              icon: Icon(Icons.home, size: 30),
             ),
-            
             BottomNavigationBarItem(
               label: 'Settings',
-              icon: Icon(Icons.settings,size: 30),
+              icon: Icon(Icons.settings, size: 30),
             ),
           ],
           currentIndex: currentIndex,
-          onTap: (int index){
-            setState(() {
-              currentIndex = index;
-            });
-
+          onTap: (int index) {
+            setState(
+              () {
+                currentIndex = index;
+              },
+            );
           },
-          
         ),
       ),
     );
   }
 }
-
-
