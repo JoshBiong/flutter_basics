@@ -63,7 +63,7 @@ class _HomepageState extends State<Homepage> {
               },
               child: _isImagechange
                   ? Image.asset('image/anotherme.jpg')
-                  : Image.asset('iamge/me.jpg'),
+                  : Image.asset('image/me.jpg'),
             ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
