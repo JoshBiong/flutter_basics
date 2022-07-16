@@ -36,24 +36,29 @@ class _HomepageState extends State<Homepage> {
         ),
       ),
       body: currentIndex == 0
-          ? Container(
-              decoration: const BoxDecoration(color: Colors.orangeAccent),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text('First Page'),
-                    ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) {
-                            return const Secondpage();
-                          }));
-                        },
-                        child: const Text('Next Page'))
-                  ],
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  decoration: const BoxDecoration(color: Colors.orangeAccent),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text('First Page'),
+                        ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (BuildContext context) {
+                                return const Secondpage();
+                              }));
+                            },
+                            child: const Text('Next Page'))
+                      ],
+                    ),
+                  ),
                 ),
-              ),
+              ],
             )
           : GestureDetector(
               onTap: () {
